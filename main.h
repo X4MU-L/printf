@@ -22,8 +22,7 @@ int _printf(const char *format, ...);
 void print_percent(va_list arg);
 void print_char(va_list arg);
 void print_string(va_list arg);
-void print_int(va_list arg);
-void _int_printer(int num);
-const char *call_print(const char *format, int *len, pf_t arr[], va_list specs);
+const char *call_print(const char *format, int *len, pf_t arr[],
+		       va_list specs);
 
 #endif

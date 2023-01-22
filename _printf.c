@@ -17,8 +17,6 @@ int _printf(const char *format, ...)
 	pf_t printarray[] = {
 		{"c", print_char},
 		{"s", print_string},
-		{"i", print_int},
-		{"d", print_int},
 		{"%", print_percent},
 		{NULL, NULL}
 	};
@@ -57,11 +55,11 @@ const char *call_print(const char *format, int *len, pf_t arr[], va_list specs)
 {
 	int i = 0;
 
-	while (i < 6 && *format != *(arr[i].str)
+	while (i < 4 && *format != *(arr[i].str)
 	       && arr[i].str != NULL)
 		i++;
 
-	if (i < 6)
+	if (i < 4)
 	{
 		arr[i].func(specs);
 		format++;
