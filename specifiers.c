@@ -15,7 +15,7 @@ int (*get_specifier(char *s))(va_list arg)
 		{NULL, NULL}
 	};
 
-	while (i < 4 && *s != *(specs_array[i].str)
+	while (i < 3 && *s != *(specs_array[i].str)
 	       && specs_array[i].str != NULL)
 		i++;
 	return (specs_array[i].func);
