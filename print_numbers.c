@@ -1,40 +1,52 @@
 #include "main.h"
 
 /**
- * print_int - Prints an int.
- * @arg: A list of arguments pointing to
- *       the integer to be printed.
+ *print_number - prints numbers
+ *@params: pointer to struct parameter 
+ *@str:  pointer to a string
+ *Return: returns number of characters printed
  */
 
-int print_int(va_list arg)
+int print_number(char *str, ps_t *params)
 {
-	int num;
-
-	num = va_arg(arg, int);
-	return (_int_printer(num));
+        unsigned int i = _strlen(str);
+	int neg = (!params->unsign && *str == '-');
+	
+	if (!params->precision && *str == '0' && !str[1])
+		str = "";
+	if (neg)
+	{
+		str++;
+		i--;
+	}
+	if (params->precision != UINT_MAX)
+		while (i++ < params->precision)
+			*--str = '0';
+	if (neg)
+		*--str = '-';
+	if (!params->minus_flag)
+		return (print_number_right_shift(str, params));
+	else
+		return (print_number_left_shift(str, params));
 }
 
-
 /**
- * _int_printer - Prints an int.
- * @num: int to be printed
+ * print_unsigned - prints unsigned integer numbers
+ * @ap: argument pointer
+ * @params: the parameters struct
+ *
+ * Return: bytes printed
  */
-
-int _int_printer(int num)
+int print_unsigned(va_list ap, ps_t *params)
 {
-	static unsigned int sum = 0;
-	int sign = -1;
-
-	if (num < 0)
-	{
-		num *= sign;
-		_putchar('-');
-		sum++;
-	}
-
-	if ((num / 10) > 0)
-		_int_printer(num / 10);
-
-	sum++;
-	return (sum + _putchar((num % 10) + '0'));
+	unsigned long l;
+	
+	if (params->l_modifier)
+		l = (unsigned long)va_arg(ap, unsigned long);
+	else if (params->h_modifier)
+		l = (unsigned short int)va_arg(ap, unsigned int);
+	else
+		l = (unsigned int)va_arg(ap, unsigned int);
+	params->unsign = 1;
+	return (print_number(convert(l, 10, CONVERT_UNSIGNED), params));
 }
