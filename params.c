@@ -3,10 +3,10 @@
 /**
  * init_params - clears struct fields and reset buf
  * @params: the parameters struct
-<<<<<<< HEAD
-=======
+ *<<<<<<< HEAD
+ *=======
  *
->>>>>>> 60cbd950fa4e7b36f464e8fe6a18d2b04c84b0e4
+ *>>>>>>> 60cbd950fa4e7b36f464e8fe6a18d2b04c84b0e4
  * Return: void
  */
 void init_params(ps_t *params)
