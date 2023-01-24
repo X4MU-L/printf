@@ -4,6 +4,7 @@
  * print_char - Prints a char.
  * @arg: A list of arguments pointing to
  *       the character to be printed.
+ * Return: return int
  */
 
 int print_char(va_list arg)
@@ -18,6 +19,7 @@ int print_char(va_list arg)
  * print_string - Prints a string.
  * @arg: A list of arguments pointing to
  *       the string to be printed.
+ * Return: return int
  */
 
 int print_string(va_list arg)
@@ -43,6 +45,7 @@ int print_string(va_list arg)
 /**
  * print_percent - Prints the character '%'.
  * @arg: A placeholder argument (unused)
+ * Return: return int
  */
 
 int print_percent(va_list __attribute__((unused)) arg)

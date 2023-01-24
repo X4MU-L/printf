@@ -17,10 +17,9 @@ int _printf(const char *format, ...)
 	ps_t params = PARAMS_INIT;
 
 	if (!format || (format[0] == '%' && !format[1]))
-		return (-1);
+		return (len);
 	if (format[0] == '%' && format[1] == ' ' && !format[2])
-		return (-1);
-
+		return (len);
 	va_start(specs, format);
 	for (p = (char *)format; *p; p++)
 	{
@@ -32,7 +31,6 @@ int _printf(const char *format, ...)
 		}
 		start = p;
 		p++;
-
 		while (set_flag(p, &params))
 			p++;
 		p = set_width(p, &params, specs);
