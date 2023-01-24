@@ -12,7 +12,7 @@ int _printf(const char *format, ...)
 {
 	int len = 0;
 	va_list specs;
-	char *p, *start;
+	char *p, start;
 	int (*func)(va_list arg);
 	ps_t params = PARAMS_INIT;
 
