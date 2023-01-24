@@ -1,8 +1,15 @@
 #include "main.h"
 
+/**
+ *print_number - prints numbers
+ *@params: pointer to struct parameter
+ *@str:  pointer to a string
+ *Return: returns number of characters printed
+ */
+
 int print_number(char *str, ps_t *params)
 {
-	unsigned int i = _strlen(str);
+        unsigned int i = _strlen(str);
 	int neg = (!params->unsign && *str == '-');
 
 	if (!params->precision && *str == '0' && !str[1])
@@ -17,7 +24,6 @@ int print_number(char *str, ps_t *params)
 			*--str = '0';
 	if (neg)
 		*--str = '-';
-
 	if (!params->minus_flag)
 		return (print_number_right_shift(str, params));
 	else
@@ -31,7 +37,6 @@ int print_number(char *str, ps_t *params)
  *
  * Return: bytes printed
  */
-
 int print_unsigned(va_list ap, ps_t *params)
 {
 	unsigned long l;
