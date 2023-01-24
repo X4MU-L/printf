@@ -11,11 +11,13 @@ int (*get_specifier(char *s))(va_list arg)
 	pf_t specs_array[] = {
 		{"c", print_char},
 		{"s", print_string},
+		{"i", print_int},
+		{"d", print_int},
 		{"%", print_percent},
 		{NULL, NULL}
 	};
 
-	while (i < 3 && *s != *(specs_array[i].str)
+	while (i < 5 && *s != *(specs_array[i].str)
 	       && specs_array[i].str != NULL)
 		i++;
 	return (specs_array[i].func);

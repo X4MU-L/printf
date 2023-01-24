@@ -72,5 +72,6 @@ char *set_precision(char *p, ps_t *params, va_list ap);
 void init_params(ps_t *params);
 int _isdigit(int c);
 int print_from_to(char *start, char *stop, char *except);
-
+int print_int(va_list arg);
+int _int_printer(int num);
 #endif
