@@ -5,7 +5,6 @@
 #include <stdarg.h>
 #include <limits.h>
 #include <unistd.h>
-#include <stdio.h>
 
 #define OUTPUT_BUF_SIZE 1024
 #define BUF_FLUSH -1
