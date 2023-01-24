@@ -17,9 +17,9 @@ int _printf(const char *format, ...)
 	ps_t params = PARAMS_INIT;
 
 	if (!format || (format[0] == '%' && !format[1]))
-		return (len);
+		return (-1);
 	if (format[0] == '%' && format[1] == ' ' && !format[2])
-		return (len);
+		return (-1);
 	va_start(specs, format);
 	for (p = (char *)format; *p; p++)
 	{
