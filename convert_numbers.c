@@ -1,5 +1,12 @@
 #include "main.h"
-#include <stdio.h>
+
+/**
+ * convert - coverts a number according to base passed
+ * @num: long int - number to convert
+ * @base: base to covert number to
+ * @flag: flag for conversion
+ * Return: returns a pointer to num convert
+ */
 
 char *convert(long int num, int base, int flag)
 {
@@ -13,7 +20,6 @@ char *convert(long int num, int base, int flag)
 	{
 		n = -num;
 		sign = '-';
-		printf("%ud\n", n);
 	}
 	array = flag & CONVERT_LOWERCASE ? "0123456789abcdef" :
 		"0123456789ABCDEF";
