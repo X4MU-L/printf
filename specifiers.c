@@ -18,7 +18,6 @@ int (*get_specifier(char *s))(va_list arg)
 	while (i < 4 && *s != *(specs_array[i].str)
 	       && specs_array[i].str != NULL)
 		i++;
-	printf("specs = %s\n", specs_array[i].str);
 	return (specs_array[i].func);
 
 }
