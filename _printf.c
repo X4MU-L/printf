@@ -13,7 +13,7 @@ int _printf(const char *format, ...)
 	int len = 0;
 	va_list specs;
 	char *p, *start;
-	int (*func)(va_list arg);
+	int (*func)(va_list arg, ps_t *params);
 	ps_t params = PARAMS_INIT;
 
 	if (!format || (format[0] == '%' && !format[1]))
@@ -44,7 +44,7 @@ int _printf(const char *format, ...)
 		else
 		{
 			func = get_specifier(p);
-			len += func(specs);
+			len += func(specs, &params);
 		}
 	}
 	_putchar(BUF_FLUSH);

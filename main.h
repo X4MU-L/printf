@@ -8,8 +8,15 @@
 
 #define OUTPUT_BUF_SIZE 1024
 #define BUF_FLUSH -1
+
 #define PARAMS_INIT {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}
 
+#define FIELD_BUF_SIZE 50
+
+#define NULL_STRING "(null)"
+
+#define CONVERT_LOWERCASE	1
+#define CONVERT_UNSIGNED	2
 /**
  * struct parameters - parameters struct
  *
@@ -56,22 +63,44 @@ typedef struct parameters
 typedef struct print_f
 {
 	char *str;
-	int (*func)(va_list arg);
+	int (*func)(va_list ap, ps_t *params);
 } pf_t;
 
-int _putchar(int c);
 int _printf(const char *format, ...);
-int print_percent(va_list arg);
-int print_char(va_list arg);
-int print_string(va_list arg);
-int (*get_specifier(char *s))(va_list arg);
-int set_flag(char *s, ps_t *flags);
+
+int print_char(va_list ap, ps_t *params);
+int print_int(va_list ap, ps_t *params);
+int print_string(va_list ap, ps_t *params);
+int print_percent(va_list ap, ps_t *params);
+int print_S(va_list ap, ps_t *params);
+int print_unsigned(va_list ap, ps_t *params);
+int print_address(va_list ap, ps_t *params);
+int print_hex(va_list ap, ps_t *params);
+int print_HEX(va_list ap, ps_t *params);
+int print_binary(va_list ap, ps_t *params);
+int print_octal(va_list ap, ps_t *params);
+int print_rev(va_list ap, ps_t *params);
+int print_rot13(va_list ap, ps_t *params);
+
+int (*get_specifier(char *s))(va_list ap, ps_t *params);
+
+int set_flag(char *s, ps_t *params);
 char *set_width(char *s, ps_t *params, va_list ap);
-int set_modifier(char *s, ps_t *mods);
+int set_modifier(char *s, ps_t *params);
 char *set_precision(char *p, ps_t *params, va_list ap);
+
 void init_params(ps_t *params);
+
 int _isdigit(int c);
+int _strlen(char *s);
+int _puts(char *str);
+int _putchar(int c);
 int print_from_to(char *start, char *stop, char *except);
-int print_int(va_list arg);
-int _int_printer(int num);
+
+char *convert(long int num, int base, int flags);
+
+int print_number(char *str, ps_t *params);
+int print_number_right_shift(char *str, ps_t *params);
+int print_number_left_shift(char *str, ps_t *params);
+
 #endif
