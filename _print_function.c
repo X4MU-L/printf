@@ -6,12 +6,12 @@
  *       the character to be printed.
  */
 
-void print_char(va_list arg)
+int print_char(va_list arg)
 {
 	char c;
 
 	c = va_arg(arg, int);
-	_putchar(c);
+	return (_putchar(c));
 }
 
 /**
@@ -20,7 +20,7 @@ void print_char(va_list arg)
  *       the string to be printed.
  */
 
-void print_string(va_list arg)
+int print_string(va_list arg)
 {
 	char *str;
 	int i = 0;
@@ -29,7 +29,7 @@ void print_string(va_list arg)
 
 	if (str == NULL)
 	{
-		return;
+		return (0);
 	}
 
 	while (*(str + i))
@@ -37,6 +37,7 @@ void print_string(va_list arg)
 		_putchar(*(str + i));
 		i++;
 	}
+	return (i);
 }
 
 /**
@@ -44,7 +45,39 @@ void print_string(va_list arg)
  * @arg: A placeholder argument (unused)
  */
 
-void print_percent(va_list __attribute__((unused)) arg)
+int print_percent(va_list __attribute__((unused)) arg)
 {
-	_putchar('%');
+	return (_putchar('%'));
+}
+
+/**
+ * _isdigit - checks if an int is a digit
+ * @c: int
+ * Return: return 1 if digit 0 if false
+ */
+
+int _isdigit(int c)
+{
+	return (c >= '0' && c <= '9');
+}
+
+/**
+ * print_from_to - prints a range of char addresses
+ * @start: starting address
+ * @stop: stopping address
+ * @except: except address
+ *
+ * Return: number bytes printed
+ */
+int print_from_to(char *start, char *stop, char *except)
+{
+	int sum = 0;
+
+	while (start <= stop)
+	{
+		if (start != except)
+			sum += _putchar(*start);
+		start++;
+	}
+	return (sum);
 }
